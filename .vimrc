@@ -57,15 +57,17 @@ highlight clear SignColumn
 
 "Rust
 let g:rustfmt_autosave = 1
-if executable('rust-analyzer')
-  au User lsp_setup call lsp#register_server({
-        \   'name': 'Rust Language Server',
-        \   'cmd': {server_info->['rust-analyzer']},
-        \   'whitelist': ['rust'],
+
+" LSP
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
         \ })
 endif
 
-" LSP
 if empty(globpath(&rtp, 'autoload/lsp.vim'))
   finish
 endif

@@ -5,30 +5,37 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
+
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+
 Plug 'thinca/vim-quickrun', {'on': 'QuickRun'}
+
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'skanehira/preview-markdown.vim'
-Plug 'wfxr/minimap.vim'
 Plug 'airblade/vim-gitgutter' 
 Plug 'tpope/vim-fugitive'
 Plug 'simeji/winresizer'
 Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
+
 Plug 'mattn/vim-goimports'
+
 Plug 'rust-lang/rust.vim'
 
 
 call plug#end()
 
+" General
 set fileencodings=utf-8,euc-jp,sjis,cp932,iso-2022-jp
 set fileformats=unix,dos,mac
 set number
@@ -48,26 +55,10 @@ syntax enable
 set updatetime=100
 highlight clear SignColumn
 
-" Parenthesis Completion
-"inoremap { {}<LEFT>
-"inoremap [ []<LEFT>
-"inoremap ( ()<LEFT>
-"inoremap " ""<LEFT>
-"inoremap ' ''<LEFT>
-
-"Rust
+" Rust
 let g:rustfmt_autosave = 1
 
 " LSP
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
-
 if empty(globpath(&rtp, 'autoload/lsp.vim'))
   finish
 endif
@@ -88,15 +79,6 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> K <plug>(lsp-hover)
     nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-    let g:lsp_diagnostics_enabled = 0
-    let g:lsp_diagnostics_signs_enabled = 0
-    let g:lsp_document_highlight_enabled = 0
-    let g:lsp_document_code_action_signs_enabled = 0
-
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
 endfunction
 
 augroup lsp_install
@@ -108,15 +90,15 @@ command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_completeopt = 1
+let g:asyncomplete_auto_completeopt = 0
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 1
 
-"Vim QuickRun
+" Vim QuickRun
 set splitbelow
 nnoremap <silent> <C-r> :QuickRun<CR>
 
-"NERDTree
+" NERDTree
 nnoremap <silent> <C-t> :NERDTreeToggle<CR>
 
 " ALE(Asynchronous Lint Engine)
@@ -144,6 +126,11 @@ let g:ale_list_window_size = 5
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+" ALE for Rust
+let g:ale_fixers = {'rust': ['rustfmt']}
+let g:ale_rust_rls_toolchain = 'stable'
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
 let g:ale_linters = {'rust': ['analyzer']}
 
 " MarkdownPreview
@@ -161,14 +148,6 @@ function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 set statusline+=%{NearestMethodOrFunction()}
-map <C-m> :Vista <CR>
-
-" MiniMap
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
-let g:minimap_git_colors = 1
-let g:minimap_highlight_search = 1
 
 " FZF
 let g:fzf_action = {

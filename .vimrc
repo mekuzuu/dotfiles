@@ -21,12 +21,14 @@ Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
-Plug 'skanehira/preview-markdown.vim'
+Plug 'vim-denops/denops.vim'
+Plug 'kat0h/bufpreview.vim'
 Plug 'airblade/vim-gitgutter' 
 Plug 'tpope/vim-fugitive'
 Plug 'simeji/winresizer'
 Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'mattn/vim-goimports'
 
@@ -49,6 +51,8 @@ set splitright
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set mouse=a
+set noswapfile
+set backspace=indent,eol,start
 syntax enable
 
 " Git

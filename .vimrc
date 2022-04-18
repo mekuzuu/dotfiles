@@ -55,6 +55,13 @@ set noswapfile
 set backspace=indent,eol,start
 syntax enable
 
+"Netrw
+let g:netrw_liststyle=1
+let g:netrw_banner=0
+let g:netrw_sizestyle="H"
+let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
+let g:netrw_preview=1
+
 " Git
 set updatetime=100
 highlight clear SignColumn
@@ -152,6 +159,8 @@ function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 set statusline+=%{NearestMethodOrFunction()}
+nmap <silent> <C-f><C-v> :<C-u>Vista<CR>
+nmap <silent> <C-f><C-s> :<C-u>Vista finder<CR>
 
 " FZF
 let g:fzf_action = {

@@ -48,12 +48,14 @@ set smartindent
 set clipboard+=unnamed
 set wildmenu
 set splitright
-set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+"set list
+"set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set mouse=a
 set noswapfile
 set backspace=indent,eol,start
 syntax enable
+let mapleader = "\<Space>"
+nnoremap <Leader>w :w<CR>
 
 "Netrw
 let g:netrw_liststyle=1
@@ -102,7 +104,7 @@ let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_auto_completeopt = 0
-let g:asyncomplete_popup_delay = 200
+let g:asyncomplete_popup_delay = 500
 let g:lsp_text_edit_enabled = 1
 
 " Vim QuickRun
@@ -110,7 +112,7 @@ set splitbelow
 nnoremap <silent> <C-r> :QuickRun<CR>
 
 " NERDTree
-nnoremap <silent> <C-t> :NERDTreeToggle<CR>
+nnoremap <Space><Space> :NERDTreeToggle<CR>
 
 " ALE(Asynchronous Lint Engine)
 let g:ale_signs_error = '☠'
@@ -179,6 +181,7 @@ let g:airline_deus_bg = 'dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamecollapse = 0
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 

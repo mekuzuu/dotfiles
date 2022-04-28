@@ -29,6 +29,7 @@ Plug 'simeji/winresizer'
 Plug 'liuchengxu/vista.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
 
 Plug 'mattn/vim-goimports'
 
@@ -63,6 +64,9 @@ let g:netrw_banner=0
 let g:netrw_sizestyle="H"
 let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 let g:netrw_preview=1
+
+" IndentLine
+let g:indentLine_color_term = 239
 
 " Git
 set updatetime=100
@@ -112,7 +116,8 @@ set splitbelow
 nnoremap <silent> <C-r> :QuickRun<CR>
 
 " NERDTree
-nnoremap <Space><Space> :NERDTreeToggle<CR>
+nnoremap <Leader>nt :<C-u>NERDTreeToggle<CR>
+nnoremap <Leader>nf :<C-u>NERDTreeFind<CR>
 
 " ALE(Asynchronous Lint Engine)
 let g:ale_signs_error = '☠'

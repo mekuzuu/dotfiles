@@ -126,30 +126,37 @@ window:
     x: 5
     y: 5
 
-# Color theme
 colors:
-  # Default colors
+   # Default colors
   primary:
-    background: '#1B1D1E'
-    foreground: '#F8F8F2'
-  # Normal colors
+    background: '#161821'
+    foreground: '#d2d4de'
+
+  cursor:
+    text: '#011627'
+    cursor: '#d6deeb'
+
+  selection:
+    background: '#1b90dd'
+
+   # Normal colors
   normal:
-    black: '#333333'
-    red: '#C4265E'
-    green: '#86B42B'
-    yellow: '#B3B42B'
-    blue: '#6A7EC8'
-    magenta: '#8C6BC8'
-    cyan: '#56ADBC'
-    white: '#E3E3DD'
-  # Bright colors
+    black:   '#011627'
+    red:     '#ef5350'
+    green:   '#22da6e'
+    yellow:  '#c5e478'
+    blue:    '#82aaff'
+    magenta: '#c792ea'
+    cyan:    '#21c7a8'
+    white:   '#ffffff'
+
+   # Bright colors
   bright:
-    black: '#666666'
-    red: '#F92672'
-    green: '#A6E22E'
-    yellow: '#E2E22E'
-    blue: '#819AFF'
-    magenta: '#AE81FF'
-    cyan: '#66D9EF'
-    white: '#F8F8F2'
-theme: Molokai
+    black:   '#575656'
+    red:     '#ef5350'
+    green:   '#22da6e'
+    yellow:  '#ffeb95'
+    blue:    '#82aaff'
+    magenta: '#c792ea'
+    cyan:    '#7fdbca'
+    white:   '#ffffff'
